@@ -1,0 +1,24 @@
+{
+  "name": "webspider",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eljoaquin/webspider.git"
+  },
+  "author": "eljoaquin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eljoaquin/webspider/issues"
+  },
+  "homepage": "https://github.com/eljoaquin/webspider#readme",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "request": "^2.69.0",
+    "slug": "^0.9.1"
+  }
+}
