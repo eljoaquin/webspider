@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/eljoaquin/webspider#readme",
   "dependencies": {
+    "cheerio": "^0.20.0",
     "mkdirp": "^0.5.1",
     "request": "^2.69.0",
     "slug": "^0.9.1"

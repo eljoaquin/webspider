@@ -1,6 +1,8 @@
 var urlParse = require('url').parse,
+    urlResolve = require('url').resolve,
     slug = require('slug'),
-    path = require('path');
+    path = require('path'),
+    cheerio = require('cheerio');
 
 module.exports.urlToFileName = function urlToFileName(url) {
     var parsedUrl = urlParse(url);
@@ -19,4 +21,26 @@ module.exports.urlToFileName = function urlToFileName(url) {
     }
 
     return filename;
+};
+
+module.exports.getLinkUrl = function getLinkUrl(currentUrl, element) {
+    var link = urlResolve(currentUrl, element.attribs.href || ""),
+        parsedLink = urlParse(link),
+        currentParsedUrl = urlParse(currentUrl);
+
+    if(parsedLink.hostname !== currentParsedUrl.hostname || !parsedLink.pathname) {
+        return null;
+    }
+
+    return link;
+};
+
+module.exports.getPageLinks = function getPageLinks(currentUrl, body) {
+    return [].slice.call(cheerio.load(body)('a'))
+        .map(function(element) {
+            return module.exports.getLinkUrl(currentUrl, element);
+        })
+        .filter(function(element) {
+            return !!element;
+        });
 };
